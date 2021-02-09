@@ -1,13 +1,29 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div>
+    <div class="container">
+      <navbar/>
     </div>
-    <router-view/>
+    <div class="container">
+      <router-view/>
+    </div>
   </div>
 </template>
-
+<script>
+import {mapActions} from 'vuex';
+import Navbar from './views/Navbar.vue';
+export default {
+  name: 'App',
+  components:{
+    Navbar
+  },
+  methods: {
+    ...mapActions(['getToken'])
+  },
+  created(){
+    this.getToken();
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -27,6 +43,6 @@
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #17a2b8;
 }
 </style>
